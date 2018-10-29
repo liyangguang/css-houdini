@@ -1,0 +1,23 @@
+<!doctype html>
+<div>Click me!</div>
+
+<style>
+div {
+  margin: 20px;
+  font-size: 2em;
+  padding-left: calc(var(--triangle-size) * 1px);
+  background-image: paint(ripple);
+  border: 1px solid blue;
+
+  --border-radius: 10px;
+  --border: 1px solid red;
+  --background-color: pink;
+  --triangle-size: 20;
+  --distance: 20;
+  --direction: 0;
+}
+</style>
+
+<script>
+CSS.paintWorklet.addModule('paintworklet.js');
+</script>
