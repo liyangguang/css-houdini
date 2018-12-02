@@ -43,52 +43,54 @@ registerPaint('tooltip', class {
         rect.height = geom.height - triangleSize * .6 - 2 * borderWidth;
         rect.x = borderWidth;
         rect.y = triangleSize * .6 + borderWidth;
-        triangle[0] = {x: trianglePosition - triangleSize / 2, y: triangleSize * .6 + borderWidth * 1.5};
+        triangle[0] = {x: trianglePosition - triangleSize / 2, y: triangleSize * .6 + borderWidth};
         triangle[1] = {x: trianglePosition, y: 0};
-        triangle[2] = {x: trianglePosition + triangleSize / 2, y: triangleSize * .6 + borderWidth * 1.5};
+        triangle[2] = {x: trianglePosition + triangleSize / 2, y: triangleSize * .6 + borderWidth};
         break;
       case 'bottom':
         rect.width = geom.width - 2 * borderWidth;
         rect.height = geom.height - triangleSize * .6 - 2 * borderWidth;
         rect.x = borderWidth;
         rect.y = borderWidth;
-        triangle[0] = {x: trianglePosition - triangleSize / 2, y: geom.height - triangleSize * .6 - borderWidth * 1.5};
+        triangle[0] = {x: trianglePosition - triangleSize / 2, y: geom.height - triangleSize * .6 - borderWidth};
         triangle[1] = {x: trianglePosition, y: geom.height};
-        triangle[2] = {x: trianglePosition + triangleSize / 2, y: geom.height - triangleSize * .6 - borderWidth * 1.5};
+        triangle[2] = {x: trianglePosition + triangleSize / 2, y: geom.height - triangleSize * .6 - borderWidth};
         break;
       case 'right':
         rect.width = geom.width - triangleSize * .6 - 2 * borderWidth;
         rect.height = geom.height - 2 * borderWidth;
         rect.x = borderWidth;
         rect.y = borderWidth;
-        triangle[0] = {x: geom.width - triangleSize * .6 - borderWidth * 1.5, y: trianglePosition - triangleSize / 2};
+        triangle[0] = {x: geom.width - triangleSize * .6 - borderWidth, y: trianglePosition - triangleSize / 2};
         triangle[1] = {x: geom.width, y: trianglePosition};
-        triangle[2] = {x: geom.width - triangleSize * .6 - borderWidth * 1.5, y: trianglePosition + triangleSize / 2};
+        triangle[2] = {x: geom.width - triangleSize * .6 - borderWidth, y: trianglePosition + triangleSize / 2};
         break;
       default:
         rect.width = geom.width - triangleSize * .6 - 2 * borderWidth;
         rect.height = geom.height - 2 * borderWidth;
         rect.x = triangleSize * .6 + borderWidth;
         rect.y = borderWidth;
-        triangle[0] = {x: triangleSize * .6 + borderWidth * 1.5, y: trianglePosition - triangleSize / 2};
+        triangle[0] = {x: triangleSize * .6 + borderWidth, y: trianglePosition - triangleSize / 2};
         triangle[1] = {x: 0, y: trianglePosition};
-        triangle[2] = {x: triangleSize * .6 + borderWidth * 1.5, y: trianglePosition + triangleSize / 2};
+        triangle[2] = {x: triangleSize * .6 + borderWidth, y: trianglePosition + triangleSize / 2};
     }
 
-    // draw
+    // setup canvas context
     ctx.fillStyle = bgColor;
     ctx.strokeStyle = borderColor;
     ctx.lineWidth = borderWidth;
+
+    // draw
     this.drawRoundRect(ctx, rect, radius);
     ctx.fill();
     if (borderWidth) {
       ctx.stroke();
+      this.coverOverlappingBorder(ctx, triangle, borderWidth, bgColor, borderColor);
     }
+    ctx.lineCap = 'round';
     this.drawTriangle(ctx, triangle);
     ctx.fill();
-    if (borderWidth) {
-      ctx.stroke();
-    }
+    if (borderWidth) {ctx.stroke();}
   }
 
   // rounded corner rect inspired by http://js-bits.blogspot.com/2010/07/canvas-rounded-corner-rectangles.html
@@ -114,5 +116,19 @@ registerPaint('tooltip', class {
     ctx.moveTo(triangle[0].x, triangle[0].y);
     ctx.lineTo(triangle[1].x, triangle[1].y);
     ctx.lineTo(triangle[2].x, triangle[2].y);
+  }
+
+  coverOverlappingBorder(ctx, triangle, borderWidth, bgColor, borderColor) {
+    // Set it to covering color
+    ctx.strokeStyle = bgColor;
+    // Set it slightly wider than the border to totally cover it.
+    ctx.lineWidth = borderWidth + 1;
+    ctx.beginPath();
+    ctx.moveTo(triangle[0].x, triangle[0].y);
+    ctx.lineTo(triangle[2].x, triangle[2].y);
+    ctx.stroke();
+    // Reset it back
+    ctx.lineWidth = borderWidth;
+    ctx.strokeStyle = borderColor;
   }
 });

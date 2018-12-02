@@ -1,26 +1,27 @@
 <!doctype html>
 <head><title>Houdini examples</title></head>
 <div>
-  <span>I'm a tooltip</span>
+  <span>I'm a tooltip!</span>
 </div>
 
 <style>
 div {
   padding: 20px;
   border: 1px solid;
+  background: pink;
 }
 span {
   padding: .5em;
 
-  padding-top: calc(var(--triangle-size) * 1px);
+  padding-left: calc(var(--triangle-size) * 1px + .5em);
   background-image: paint(tooltip);
 
   --round-radius: 5;
-  --background-color: pink;
+  --background-color: #fff;
   --triangle-size: 16;
   --position: center;
-  --direction: top;
-  --border-color: red;
+  --direction: left;
+  --border-color: #000;
   --border-width: 2;
 }
 </style>
