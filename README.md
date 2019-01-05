@@ -24,7 +24,7 @@ Tip: You can inspect the [preview page](https://liyangguang.github.io/css-houdin
 </style>
 
 <!-- Import the CSS Houdini -->
-<script>CSS.paintWorklet.addModule('paintworklet.js?no-cache=1');</script>
+<script>CSS.paintWorklet.addModule('paintworklet.js');</script>
 
 ```
 
@@ -35,6 +35,6 @@ Tip: You can inspect the [preview page](https://liyangguang.github.io/css-houdin
 | --position | Position of the triangle on the rectangle edge | number 0 - 100 (percentage), or a keyword 'center', default: center |
 | --triangle-size | The length of the long edge of the pointing triangle | number, default: 16 |
 | --round-radius | Corner radius of the rectangle in pixels | number, default: 5 |
-| --background-color | Background color | default: #fff |
+| --background-color | Background color | color, default: #fff |
 | --border-width | Border width | number, default: 0 |
 | --border-color | Border color | color, default: #000 |
