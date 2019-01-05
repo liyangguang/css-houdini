@@ -10,7 +10,7 @@ Some helpful CSS snippets written in Houdini.
 
 ## 1. Tooltip: [preview](https://liyangguang.github.io/css-houdini/)
 You can play around with all the CSS variables in the browser devtool.
-![screenshot](https://liyangguang.github.io/css-houdini/screenshots/tooltip.png)
+![screenshot](https://liyangguang.github.io/css-houdini/screenshots/tooltip.png?no-cache=1)
 
 ### Usage
 ```css
