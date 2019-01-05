@@ -8,13 +8,24 @@ Some helpful CSS snippets written in Houdini.
 1. Load the paint worklet `CSS.paintWorklet.addModule('paintworklet.js')`.
 1. Use them in CSS!
 
-## 1. Tooltip: [preview](https://liyangguang.github.io/css-houdini/)
-You can play around with all the CSS variables in the browser devtool.
+## 1. Tooltip: ([preview](https://liyangguang.github.io/css-houdini/))
 ![screenshot](https://liyangguang.github.io/css-houdini/screenshots/tooltip.png?no-cache=1)
 
+Tip: You can inspect the [preview page](https://liyangguang.github.io/css-houdini/) to see them in action and play around with them.
+
 ### Usage
-```css
-  background-image: paint(tooltip);
+```html
+<span>This is a tip</span>
+<style>
+  span {
+    background-image: paint(tooltip);  /* Apply the tooltip paint rule */
+    /* ... Optional: customize variables (see below) and other normal CSS for positioning, etc. */
+  }
+</style>
+
+<!-- Import the CSS Houdini -->
+<script>CSS.paintWorklet.addModule('paintworklet.js?no-cache=1');</script>
+
 ```
 
 ### Customizable CSS variables
@@ -27,5 +38,3 @@ You can play around with all the CSS variables in the browser devtool.
 | --background-color | Background color | default: #fff |
 | --border-width | Border width | number, default: 0 |
 | --border-color | Border color | color, default: #000 |
-
-Tip: You can inspect the preview page to see them in action and play around with them.
