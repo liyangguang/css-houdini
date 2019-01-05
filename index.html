@@ -3,15 +3,10 @@
 <body>
   <span class="tooltip-1">I'm a default tooltip!</span>
   <span class="tooltip-2">I'm a customized tooltip!</span>
+  <p>You can directly edit the following CSS!</p>
 </body>
 
-<style>
-body {
-  padding: 5em;
-  background: #ddd;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
+<style contenteditable>
 .tooltip-1 {
   background-image: paint(tooltip);
   padding: .5em .5em .5em 1em;
@@ -28,6 +23,24 @@ body {
   --border-color: #333;
   --border-width: 2;
   color: #fff;
+}
+</style>
+
+<style>
+body {
+  padding: 5em;
+  background: #ddd;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+p {
+  margin: 2em 0;
+}
+
+style[contenteditable] {
+  display: block;
+  white-space: pre;
+  background: #fff;
 }
 </style>
 
