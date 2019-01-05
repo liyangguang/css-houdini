@@ -14,14 +14,13 @@ You can play around with all the CSS variables in the browser devtool.
 
 ### Usage
 ```css
-  background-image: paint(tooltip);  /* apply this */
-  padding-left: calc(var(--triangle-size) * 1px + .5em);  /* position the text */
+  background-image: paint(tooltip);
 ```
 
 ### Customizable CSS variables
 | Name | Meaning | Value |
 |---|---|---|
-| --direction | Direction of the triangle | 'top'|'bottom'|'left'|'right', default: 'left' |
+| --direction | Direction of the triangle | 'top'/'bottom'/'left'/'right', default: 'left' |
 | --position | Position of the triangle on the rectangle edge | number 0 - 100 (percentage), or a keyword 'center', default: center |
 | --triangle-size | The length of the long edge of the pointing triangle | number, default: 16 |
 | --round-radius | Corner radius of the rectangle in pixels | number, default: 5 |
