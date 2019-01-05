@@ -13,18 +13,19 @@ registerPaint('tooltip', class {
   paint(ctx, geom, properties) {
     // default values
     const DEFAULT_RADIUS = 5;
-    const DEFAULT_BACKGROUND = '#ddd';
+    const DEFAULT_BACKGROUND = '#fff';
     const DEFAULT_TRIANGLE_SIZE = 16;
     const DEFAULT_DIRECTION = 'left';
     const DEFAULT_POSITION = 50;
     const DEFAULT_BORDER_WIDTH = 0;
+    const DEFAULT_BORDER_COLOR = '#000';
 
     // get shape vars
-    const radius = parseFloat(properties.get('--round-radius').toString()) || DEFAULT_RADIUS;
+    const radius = isNaN(parseFloat(properties.get('--round-radius').toString())) ? DEFAULT_RADIUS : parseFloat(properties.get('--round-radius').toString());
     const bgColor = properties.get('--background-color').toString() || DEFAULT_BACKGROUND;
     
     // get border vars
-    const borderColor = properties.get('--border-color').toString();
+    const borderColor = properties.get('--border-color').toString() || DEFAULT_BORDER_COLOR;
     const borderWidth = parseFloat(properties.get('--border-width').toString() || DEFAULT_BORDER_WIDTH);
 
     // get position vars

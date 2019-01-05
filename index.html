@@ -1,28 +1,33 @@
 <!doctype html>
 <head><title>Houdini examples</title></head>
-<div>
-  <span>I'm a tooltip!</span>
-</div>
+<body>
+  <span class="tooltip-1">I'm a default tooltip!</span>
+  <span class="tooltip-2">I'm a customized tooltip!</span>
+</body>
 
 <style>
-div {
-  padding: 20px;
-  border: 1px solid;
-  background: pink;
+body {
+  padding: 5em;
+  background: #ddd;
+  font-family: Helvetica, Arial, sans-serif;
 }
-span {
-  padding: .5em;
 
-  padding-left: calc(var(--triangle-size) * 1px + .5em);
+.tooltip-1 {
   background-image: paint(tooltip);
+  padding: .5em .5em .5em 1em;
+}
 
-  --round-radius: 5;
-  --background-color: #fff;
-  --triangle-size: 16;
-  --position: center;
-  --direction: left;
-  --border-color: #000;
+.tooltip-2 {
+  background-image: paint(tooltip);
+  padding: calc(var(--triangle-size) * 1px + .5em) 1em 1em;
+  --round-radius: 0;
+  --background-color: #4d7990;
+  --triangle-size: 20;
+  --position: 20;
+  --direction: top;
+  --border-color: #333;
   --border-width: 2;
+  color: #fff;
 }
 </style>
 
